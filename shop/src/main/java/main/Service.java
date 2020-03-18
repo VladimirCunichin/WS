@@ -31,6 +31,9 @@ public class Service {
                 throw new ArticleDuplicateException();
             }
         }
+        if(article.getId() == null){
+            article.setId(String.valueOf(articleList.size()+1));
+        }
         articleList.add(article);
         HttpHeaders response = new HttpHeaders();
         response.set("location", "/articles/" + article.getId());
