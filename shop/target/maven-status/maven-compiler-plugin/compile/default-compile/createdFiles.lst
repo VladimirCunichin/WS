@@ -1,0 +1,7 @@
+main\Service.class
+model\Article.class
+main\Controller.class
+main\ShopApplication.class
+main\Exceptions\ArticleDuplicateException.class
+main\SwaggerConfig.class
+main\Exceptions\ArticleNotFoundException.class

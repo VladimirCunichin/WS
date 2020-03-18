@@ -4,6 +4,8 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import model.Article;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,25 +41,29 @@ public class Controller {
             @ApiResponse(code = 500, message = "Failed to add an article"),
     })
     @PostMapping( value = "/articles")
-    public void addArticle(@RequestBody Article article){
-        articleService.addArticle(article);
+    public ResponseEntity<Article> addArticle(@RequestBody Article article){
+        return articleService.addArticle(article);
     }
     @ApiResponses( {
-            @ApiResponse(code = 200, message = "Successfully updated article"),
+            @ApiResponse(code = 204, message = "Successfully updated article"),
             @ApiResponse(code = 400, message = "Bad Request"),
             @ApiResponse(code = 404, message = "article not found"),
     })
     @PutMapping(value = "/articles/{id}")
-    public void updateArticle(@RequestBody Article article,@PathVariable String id){
+    public ResponseEntity updateArticle(@RequestBody Article article,@PathVariable String id) throws Exception{
         articleService.updateArticle(article, id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
     }
     @ApiResponses(value = {
             @ApiResponse(code = 204, message = "article deleted by Id"),
             @ApiResponse(code = 404, message = "article not found")
     })
     @DeleteMapping( value = "/articles/{id}")
-    public void deleteArticle(@PathVariable String id){
+    public ResponseEntity deleteArticle(@PathVariable String id){
         articleService.deleteArticle(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
     }
 
 }
