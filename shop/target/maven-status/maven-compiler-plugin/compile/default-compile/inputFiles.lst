@@ -1,7 +1,14 @@
-C:\Users\Vova\IdeaProjects\shop\src\main\java\main\Exceptions\ArticleDuplicateException.java
 C:\Users\Vova\IdeaProjects\shop\src\main\java\main\Service.java
-C:\Users\Vova\IdeaProjects\shop\src\main\java\model\Article.java
-C:\Users\Vova\IdeaProjects\shop\src\main\java\main\SwaggerConfig.java
+C:\Users\Vova\IdeaProjects\shop\src\main\java\model\PcPart.java
+C:\Users\Vova\IdeaProjects\shop\src\main\java\main\Exceptions\ExternalApiException.java
+C:\Users\Vova\IdeaProjects\shop\src\main\java\main\ExternalController.java
+C:\Users\Vova\IdeaProjects\shop\src\main\java\main\Exceptions\PcPartNotFoundException.java
 C:\Users\Vova\IdeaProjects\shop\src\main\java\main\Exceptions\ArticleNotFoundException.java
 C:\Users\Vova\IdeaProjects\shop\src\main\java\main\Controller.java
+C:\Users\Vova\IdeaProjects\shop\src\main\java\main\Exceptions\ArticleDuplicateException.java
+C:\Users\Vova\IdeaProjects\shop\src\main\java\model\Article.java
+C:\Users\Vova\IdeaProjects\shop\src\main\java\main\SwaggerConfig.java
+C:\Users\Vova\IdeaProjects\shop\src\main\java\model\Response.java
+C:\Users\Vova\IdeaProjects\shop\src\main\java\model\ResponseSingle.java
+C:\Users\Vova\IdeaProjects\shop\src\main\java\main\ExternalService.java
 C:\Users\Vova\IdeaProjects\shop\src\main\java\main\ShopApplication.java

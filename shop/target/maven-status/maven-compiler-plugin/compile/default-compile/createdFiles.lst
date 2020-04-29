@@ -1,7 +1,14 @@
-main\Service.class
 model\Article.class
 main\Controller.class
+model\ResponseSingle.class
 main\ShopApplication.class
+model\PcPart.class
+main\Exceptions\ExternalApiException.class
+main\ExternalService.class
+main\Exceptions\ArticleNotFoundException.class
+main\Service.class
+main\ExternalController.class
+main\Exceptions\PcPartNotFoundException.class
 main\Exceptions\ArticleDuplicateException.class
 main\SwaggerConfig.class
-main\Exceptions\ArticleNotFoundException.class
+model\Response.class

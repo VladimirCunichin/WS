@@ -1,0 +1,25 @@
+version: '3.7'
+services:
+    articles-service:
+        container_name: articles-service
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "5000:5000"
+        volumes:
+        - .:/service
+        networks:
+            - ws_bridge
+    computer-parts:
+        build: ./comp_parts
+        command: python app.py
+        ports:
+            - "80:5000"
+        volumes:
+        - .:/service
+        container_name: external
+        networks:
+            - ws_bridge
+networks:
+    ws_bridge:

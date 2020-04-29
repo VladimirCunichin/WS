@@ -1,0 +1,5 @@
+servers:
+  - url: localhost:5000/
+    description: Article server
+  - url: localhost:80/
+    description: Parts server
