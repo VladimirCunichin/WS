@@ -16,12 +16,12 @@ public class PcPart {
 
     }
 
-    public PcPart(Integer id, String manufacturer, String name, String type, String price) {
+    public PcPart(long id, String manufacturer, String name, String price, String type) {
         this.id = id;
         this.manufacturer = manufacturer;
         this.name = name;
-        this.type = type;
         this.price = price;
+        this.type = type;
     }
     public PcPart(PcPart part){
         this.id = part.id;
@@ -30,30 +30,22 @@ public class PcPart {
         this.type = part.type;
         this.price = part.price;
     }
-    public PcPart(Integer id){
+    public PcPart(long id){
         this.id = id;
     }
-    //@JsonProperty("id")
-    private Integer id;
-
-    //@JsonProperty("manufacturer")
+    private long id;
     private String manufacturer;
-
-
-    //@JsonProperty("name")
     private String name;
-
-    //@JsonProperty("type")
+    private String price;
     private String type;
 
-    //@JsonProperty("price")
-    private String price;
 
-    public int getId() {
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

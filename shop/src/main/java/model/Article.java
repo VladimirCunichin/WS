@@ -7,29 +7,24 @@ public class Article {
     private String id;
     private String name;
     private String description;
+    private long partId;
 
-    public List<PcPart> getParts() {
-        return parts;
+    public long getPartId() {
+        return partId;
     }
 
-    private List<PcPart> parts;
-
-    public void setParts(List<PcPart> parts) {
-        this.parts = parts;
+    public void setPartId(long partId) {
+        this.partId = partId;
     }
 
-    public void addParts(PcPart part) {
-        if(parts == null) {
-            parts = new ArrayList();
-        }
-        parts.add(part);
-    }
 
-    public Article(String id, String name, String description, List<PcPart> parts) {
+
+
+    public Article(String id, String name, String description, long partId) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.parts = parts;
+        this.partId = partId;
     }
 
     public Article(String id, String name, String description) {

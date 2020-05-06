@@ -1,18 +1,10 @@
 package main.Exceptions;
 
-public class ExternalApiException extends RuntimeException{
-    private String message;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-    public static ExternalApiException create() {
-        return new ExternalApiException("External service could not handle your request correctly");
-    }
-
-    private ExternalApiException(String message) {
-        this.message = message;
-    }
-
-    @Override
-    public String getMessage() {
-        return this.message;
+@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "Part not found!")
+public class ExternalApiException extends RuntimeException {
+    public ExternalApiException() {
     }
 }
