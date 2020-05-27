@@ -5,8 +5,9 @@ import io.swagger.annotations.ApiResponses;
 import main.Exceptions.ExternalApiException;
 import main.Exceptions.PcPartDuplicateException;
 import main.Exceptions.PcPartNotFoundException;
-import model.Article;
-import model.PcPart;
+import io.spring.guides.gs_producing_web_service.PcPart;
+import io.spring.guides.gs_producing_web_service.Article;
+
 import model.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -137,18 +138,7 @@ public class Controller {
     })
     @GetMapping("/parts")
     public List<PcPart> getAllPartsFromOtherService() {
-        List<PcPart> list = new ArrayList<>();
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<PcPart[]> response =
-                restTemplate.getForEntity(
-                        "http://computer-parts:5000/api/parts",
-                        PcPart[].class);
-        PcPart[] parts = response.getBody();
-        Collections.addAll(list, parts);
-        if (list.size() < 1) {
-            throw new PcPartNotFoundException();
-        }
-        return list;
+        return articleService.getAllPartsFromOtherS();
     }
 
     @ApiResponses(value = {
@@ -156,20 +146,8 @@ public class Controller {
             @ApiResponse(code = 404, message = "Part not found")
     })
     @GetMapping("/parts/{id}")
-    public ResponseEntity getPartFromOtherServiceByPartId(@PathVariable long id) {
-        RestTemplate restTemplate = new RestTemplate();
-        try{
-        ResponseEntity<PcPart[]> response =
-                restTemplate.getForEntity(
-                        "http://computer-parts:5000/api/parts/" + id,
-                        PcPart[].class);
-        PcPart[] parts = response.getBody();}
-        catch (HttpClientErrorException e){
-            if(e.getStatusCode().equals(HttpStatus.NOT_FOUND)){
-                throw new PcPartNotFoundException();
-            }
-        }
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    public PcPart getPartFromOtherServiceByPartId(@PathVariable long id) {
+        return articleService.getPartByIdFromOtherS(id);
     }
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Successfully added part"),
@@ -179,20 +157,7 @@ public class Controller {
     })
     @PostMapping("/api/parts")
     public ResponseEntity<PcPart> addPartToOtherService(@RequestBody PcPart part) {
-        List<PcPart> list = getAllPartsFromOtherService();
-        for(PcPart temp: list){
-            if(part.getId() == temp.getId()){
-                throw new PcPartDuplicateException();
-            }
-        }
-        RestTemplate restTemplate = new RestTemplate();
-        try{
-            PcPart result = restTemplate.postForObject("http://computer-parts:5000/api/parts",part,PcPart.class);
-        }
-        catch(Exception e){
-            throw new RuntimeException("Failed to add part");
-        }
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return articleService.addPart(part);
     }
 
     @ApiResponses(value = {
@@ -246,8 +211,8 @@ public class Controller {
             @ApiResponse(code = 404, message = "Part not found")
     })
     @PutMapping(value = "/api/parts/{id}")
-    public ResponseEntity updatePart(@PathVariable String id, @RequestBody PcPart part) {
-        PcPart temp = getPart(id);
+    public ResponseEntity updatePart(@PathVariable long id, @RequestBody PcPart part) {
+        PcPart temp = getPartFromOtherServiceByPartId(id);
         part.setId(temp.getId());
         articleService.updatePcPart(part,id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

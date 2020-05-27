@@ -4,10 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Article {
-    private String id;
-    private String name;
-    private String description;
-    private long partId;
+    protected String id;
+    protected String name;
+    protected String description;
+    protected long partId;
+    private PcPart part;
+
+    public PcPart getPart() {
+        return part;
+    }
+
+    public void setPart(PcPart part) {
+        this.part = part;
+    }
 
     public long getPartId() {
         return partId;

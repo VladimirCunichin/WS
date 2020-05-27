@@ -1,0 +1,106 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service"
+           elementFormDefault="qualified">
+
+    <xs:element name="getArticleRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getArticleResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Article" type="tns:Article"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteArticleRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteArticleResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Article" type="tns:Article"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateArticleRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:string"/>
+                <xs:element name="newid" type="xs:string"/>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="description" type="xs:string"/>
+                <xs:element name="partId" type="xs:long"/>
+                <xs:element name="pcpartid" type="xs:long"/>
+                <xs:element name="manufacturer" type="xs:string"/>
+                <xs:element name="pcpartname" type="xs:string"/>
+                <xs:element name="price" type="xs:string"/>
+                <xs:element name="type" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateArticleResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Article" type="tns:Article"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addArticleRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:string"/>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="description" type="xs:string"/>
+                <xs:element name="partId" type="xs:long"/>
+                <xs:element name="pcpartid" type="xs:long"/>
+                <xs:element name="manufacturer" type="xs:string"/>
+                <xs:element name="pcpartname" type="xs:string"/>
+                <xs:element name="price" type="xs:string"/>
+                <xs:element name="type" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addArticleResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Article" type="tns:Article"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="Article">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="description" type="xs:string"/>
+            <xs:element name="partId" type="xs:long"/>
+            <xs:element name="part" type="tns:PcPart"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PcPart">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="manufacturer" type="xs:string"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="price" type="xs:string"/>
+            <xs:element name="type" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+</xs:schema>
