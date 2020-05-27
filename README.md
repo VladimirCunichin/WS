@@ -6,9 +6,9 @@ docker-compose up
 http://localhost:5000/swagger-ui.html#/
 
 
-SOAP uzklausos:
-http://localhost:5000/ws
-add:
+SOAP uzklausos:  
+http://localhost:5000/ws  
+add:  
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">
    <soapenv:Header/>
    <soapenv:Body>
@@ -35,8 +35,8 @@ delete:
       </gs:deleteArticleRequest>
    </soapenv:Body>
 </soapenv:Envelope>
-
-update:
+  
+update:  
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">
    <soapenv:Header/>
    <soapenv:Body>
@@ -54,8 +54,8 @@ update:
       </gs:updateArticleRequest>
    </soapenv:Body>
 </soapenv:Envelope>
-
-get:
+  
+get:  
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">
    <soapenv:Header/>
    <soapenv:Body>
