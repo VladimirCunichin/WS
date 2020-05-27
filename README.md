@@ -26,7 +26,7 @@ add:
    </soapenv:Body>
 </soapenv:Envelope>
 
-delete:
+delete:  
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">
    <soapenv:Header/>
    <soapenv:Body>
